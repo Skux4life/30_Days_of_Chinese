@@ -1,0 +1,93 @@
+<resources>
+    <string name="app_name">30 Days of Chinese</string>
+
+    <string name="day1_pinyin">yi1</string>
+    <string name="day1_definition">one</string>
+
+    <string name="day2_pinyin">ren2</string>
+    <string name="day2_definition">man</string>
+
+    <string name="day3_pinyin">shi2</string>
+    <string name="day3_definition">ten</string>
+
+    <string name="day4_pinyin">shan1</string>
+    <string name="day4_definition">mountain</string>
+
+    <string name="day5_pinyin">da4</string>
+    <string name="day5_definition">big</string>
+
+    <string name="day6_pinyin">xiao3</string>
+    <string name="day6_definition">small</string>
+
+    <string name="day7_pinyin">kou3</string>
+    <string name="day7_definition">mouth</string>
+
+    <string name="day8_pinyin">nv3</string>
+    <string name="day8_definition">female</string>
+
+    <string name="day9_pinyin">ma3</string>
+    <string name="day9_definition">horse</string>
+
+    <string name="day10_pinyin">gong1</string>
+    <string name="day10_definition">work</string>
+
+    <string name="day11_pinyin">men2</string>
+    <string name="day11_definition">door</string>
+
+    <string name="day12_pinyin">shang4</string>
+    <string name="day12_definition">up</string>
+
+    <string name="day13_pinyin">xia4</string>
+    <string name="day13_definition">down</string>
+
+    <string name="day14_pinyin">ri4</string>
+    <string name="day14_definition">sun/day</string>
+
+    <string name="day15_pinyin">yue4</string>
+    <string name="day15_definition">moon/month</string>
+
+    <string name="day16_pinyin">shui3</string>
+    <string name="day16_definition">water</string>
+
+    <string name="day17_pinyin">huo3</string>
+    <string name="day17_definition">fire</string>
+
+    <string name="day18_pinyin">tian1</string>
+    <string name="day18_definition">sky</string>
+
+    <string name="day19_pinyin">niu2</string>
+    <string name="day19_definition">cow</string>
+
+    <string name="day20_pinyin">mu4</string>
+    <string name="day20_definition">wood</string>
+
+    <string name="day21_pinyin">kai1</string>
+    <string name="day21_definition">open/to start</string>
+
+    <string name="day22_pinyin">xin1</string>
+    <string name="day22_definition">heart</string>
+
+    <string name="day23_pinyin">bu4</string>
+    <string name="day23_definition">no (kind of)</string>
+
+    <string name="day24_pinyin">shou3</string>
+    <string name="day24_definition">hand</string>
+
+    <string name="day25_pinyin">wang2</string>
+    <string name="day25_definition">King</string>
+
+    <string name="day26_pinyin">zhong1</string>
+    <string name="day26_definition">center/middle</string>
+
+    <string name="day27_pinyin">sheng1</string>
+    <string name="day27_definition">birth</string>
+
+    <string name="day28_pinyin">yang2</string>
+    <string name="day28_definition">sheep</string>
+
+    <string name="day29_pinyin">mi3</string>
+    <string name="day29_definition">rice</string>
+
+    <string name="day30_pinyin">nan2</string>
+    <string name="day30_definition">boy</string>
+</resources>
