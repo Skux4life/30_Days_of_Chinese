@@ -3,5 +3,6 @@
 
     <style name="Theme.30DaysOfChinese" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:statusBarColor">@color/app_bar</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 </resources>

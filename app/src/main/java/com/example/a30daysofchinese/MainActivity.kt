@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -13,6 +14,8 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -50,14 +53,14 @@ fun App() {
         topBar = { AppTopBar() }
     ) {
         LazyColumn(
-            modifier = Modifier.padding(8.dp)
+            modifier = Modifier.padding(8.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             items(days) {
                 ItemCard(day = it)
             }
         }
     }
-
 }
 
 @Composable
@@ -66,18 +69,24 @@ fun ItemCard(
     modifier: Modifier = Modifier
 ) {
     Card(
-        modifier = modifier.padding(4.dp),
-        elevation = 4.dp
+        modifier = modifier.padding(16.dp)
+            .fillMaxWidth(),
+        elevation = 16.dp,
     ) {
         Column(
+            modifier = Modifier.padding(4.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             CharacterImage(imageRes = day.characterImage)
             Text(
-                text = "Pinyin: " + stringResource(id = day.pinyin)
+                text = "Pinyin: " + stringResource(id = day.pinyin),
+                modifier = Modifier.padding(start = 24.dp),
+                style = MaterialTheme.typography.body1
             )
             Text(
-                text = "English Definition: " + stringResource(id = day.definition)
+                text = "English Definition: " + stringResource(id = day.definition),
+                modifier = Modifier.padding(start = 24.dp, bottom = 8.dp),
+                style = MaterialTheme.typography.body1
             )
         }
     }
@@ -98,16 +107,24 @@ private fun CharacterImage(
             }
         }
         .build()
-    Image(
-        painter = rememberAsyncImagePainter(
-            ImageRequest.Builder(context).data(imageRes).apply(
-                block = {
-                    size(Size.ORIGINAL)
-                }).build(), imageLoader
-        ),
-        contentDescription = "Chinese character",
-        modifier = Modifier.fillMaxWidth()
-    )
+    Box(
+        modifier = modifier.fillMaxWidth(),
+        contentAlignment = Alignment.Center
+    ) {
+        Image(
+            painter = rememberAsyncImagePainter(
+                ImageRequest.Builder(context).data(imageRes).apply(
+                    block = {
+                        size(Size.ORIGINAL)
+                    }).build(), imageLoader
+            ),
+            contentDescription = "Chinese character",
+            contentScale = ContentScale.Fit,
+            modifier = modifier
+                .padding(top = 4.dp)
+                .clip(MaterialTheme.shapes.medium),
+            )
+    }
 }
 
 @Composable
@@ -115,12 +132,14 @@ private fun AppTopBar(modifier: Modifier = Modifier) {
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .height(60.dp),
+            .height(60.dp)
+            .background(MaterialTheme.colors.primaryVariant),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center
     ) {
         Text(
             text = stringResource(id = R.string.app_name),
+            style = MaterialTheme.typography.h1
         )
 
     }
