@@ -14,6 +14,8 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -59,7 +61,6 @@ fun App() {
             }
         }
     }
-
 }
 
 @Composable
@@ -68,8 +69,9 @@ fun ItemCard(
     modifier: Modifier = Modifier
 ) {
     Card(
-        modifier = modifier.padding(16.dp),
-        elevation = 4.dp,
+        modifier = modifier.padding(16.dp)
+            .fillMaxWidth(),
+        elevation = 16.dp,
     ) {
         Column(
             modifier = Modifier.padding(4.dp),
@@ -78,11 +80,13 @@ fun ItemCard(
             CharacterImage(imageRes = day.characterImage)
             Text(
                 text = "Pinyin: " + stringResource(id = day.pinyin),
-                modifier = Modifier.padding(start = 24.dp)
+                modifier = Modifier.padding(start = 24.dp),
+                style = MaterialTheme.typography.body1
             )
             Text(
                 text = "English Definition: " + stringResource(id = day.definition),
-                modifier = Modifier.padding(start = 24.dp, bottom = 8.dp)
+                modifier = Modifier.padding(start = 24.dp, bottom = 8.dp),
+                style = MaterialTheme.typography.body1
             )
         }
     }
@@ -103,17 +107,24 @@ private fun CharacterImage(
             }
         }
         .build()
-    Image(
-        painter = rememberAsyncImagePainter(
-            ImageRequest.Builder(context).data(imageRes).apply(
-                block = {
-                    size(Size.ORIGINAL)
-                }).build(), imageLoader
-        ),
-        contentDescription = "Chinese character",
-        modifier = modifier.fillMaxWidth()
-            .padding(top = 4.dp)
-    )
+    Box(
+        modifier = modifier.fillMaxWidth(),
+        contentAlignment = Alignment.Center
+    ) {
+        Image(
+            painter = rememberAsyncImagePainter(
+                ImageRequest.Builder(context).data(imageRes).apply(
+                    block = {
+                        size(Size.ORIGINAL)
+                    }).build(), imageLoader
+            ),
+            contentDescription = "Chinese character",
+            contentScale = ContentScale.Fit,
+            modifier = modifier
+                .padding(top = 4.dp)
+                .clip(MaterialTheme.shapes.medium),
+            )
+    }
 }
 
 @Composable
@@ -128,6 +139,7 @@ private fun AppTopBar(modifier: Modifier = Modifier) {
     ) {
         Text(
             text = stringResource(id = R.string.app_name),
+            style = MaterialTheme.typography.h1
         )
 
     }
