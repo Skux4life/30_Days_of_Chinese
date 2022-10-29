@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -50,7 +51,8 @@ fun App() {
         topBar = { AppTopBar() }
     ) {
         LazyColumn(
-            modifier = Modifier.padding(8.dp)
+            modifier = Modifier.padding(8.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             items(days) {
                 ItemCard(day = it)
@@ -66,18 +68,21 @@ fun ItemCard(
     modifier: Modifier = Modifier
 ) {
     Card(
-        modifier = modifier.padding(4.dp),
-        elevation = 4.dp
+        modifier = modifier.padding(16.dp),
+        elevation = 4.dp,
     ) {
         Column(
+            modifier = Modifier.padding(4.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             CharacterImage(imageRes = day.characterImage)
             Text(
-                text = "Pinyin: " + stringResource(id = day.pinyin)
+                text = "Pinyin: " + stringResource(id = day.pinyin),
+                modifier = Modifier.padding(start = 24.dp)
             )
             Text(
-                text = "English Definition: " + stringResource(id = day.definition)
+                text = "English Definition: " + stringResource(id = day.definition),
+                modifier = Modifier.padding(start = 24.dp, bottom = 8.dp)
             )
         }
     }
@@ -106,7 +111,8 @@ private fun CharacterImage(
                 }).build(), imageLoader
         ),
         contentDescription = "Chinese character",
-        modifier = Modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth()
+            .padding(top = 4.dp)
     )
 }
 
@@ -115,7 +121,8 @@ private fun AppTopBar(modifier: Modifier = Modifier) {
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .height(60.dp),
+            .height(60.dp)
+            .background(MaterialTheme.colors.primaryVariant),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center
     ) {
